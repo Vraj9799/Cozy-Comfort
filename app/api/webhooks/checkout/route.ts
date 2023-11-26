@@ -2,6 +2,7 @@ import { BASKET, PAID } from "@/helpers/constants";
 import dbConnect from "@/helpers/dbConnect";
 import Order from "@/models/Order";
 import { NextRequest, NextResponse } from "next/server"
+import { BiRightDownArrowCircle } from "react-icons/bi";
 import Stripe from 'stripe';
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string, {
     typescript: true,
@@ -16,6 +17,7 @@ export async function POST(request: NextRequest) {
 
     try {
         const rawBody = await request.text();
+        console.log(`Raw Body --> ${rawBody} || Signature --> ${sig} || Secret --> ${endpointSecret}`);
         event = stripe.webhooks.constructEvent(rawBody, sig as string, endpointSecret);
     } catch (err) {
         console.error(err);
