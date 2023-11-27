@@ -4,7 +4,7 @@ import Quantity from "./Quantity";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { UseMutationResult } from "@tanstack/react-query";
 
-const CartItem = ({ item, index, mutation }: { item: any, index: number, mutation: UseMutationResult<any, any, any, unknown> }) => {
+const CartItem = ({ item, index, mutation, locale, currency }: { item: any, index: number, mutation: UseMutationResult<any, any, any, unknown>, locale: string | null, currency: string | null }) => {
     const { mutateAsync, isPending } = mutation;
     return (
         <>
@@ -13,12 +13,13 @@ const CartItem = ({ item, index, mutation }: { item: any, index: number, mutatio
                     <Image
                         src={item?.productId?.images[0]}
                         alt={item?.productId?.name}
-                        height={100}
-                        width={150}
+                        height={{ base: 45, md: 100 }}
+                        width={{ base: 55, md: 150 }}
                     />
                     <Flex ml={5} flexDirection={"column"}>
                         <Text
                             as={"h5"}
+                            fontSize={{ base: "0.7rem", md: "1rem" }}
                             sx={{
                                 textTransform: "capitalize",
                                 fontWeight: "bold",
@@ -27,13 +28,13 @@ const CartItem = ({ item, index, mutation }: { item: any, index: number, mutatio
                                 letterSpacing: "var(--spacing)",
                                 mb: 0,
                                 pb: 0,
-                                fontSize: "1rem",
                             }}
                         >
                             {item?.productId?.name}
                         </Text>
                         <Text
                             as={"h6"}
+                            fontSize={{ base: "0.6rem", md: "0.9rem" }}
                             sx={{
                                 textTransform: "capitalize",
                                 fontWeight: "bold",
@@ -42,19 +43,11 @@ const CartItem = ({ item, index, mutation }: { item: any, index: number, mutatio
                                 letterSpacing: "var(--spacing)",
                                 mb: 0,
                                 pb: 0,
-                                fontSize: "0.9rem",
                                 mt: 2
                             }}
                         >
-                            {formatPrice(item?.unitPrice, 2)}
+                            {formatPrice(locale, currency, item?.unitPrice, 2)}
                         </Text>
-                        <Flex justifyContent={"center"} alignItems={"center"} display={{ base: "flex", md: "none" }} mt={2}>
-                            <Quantity item={item} isPending={isPending} handleChange={async ({ productId, quantity }) => await mutateAsync({ productId, quantity })} />
-                            <DeleteIcon ml={3} h="full" role="button" onClick={async () => {
-                                await mutateAsync(
-                                    { productId: item?.productId?._id, quantity: 0 })
-                            }} />
-                        </Flex>
                     </Flex>
 
                 </Flex>
@@ -69,6 +62,7 @@ const CartItem = ({ item, index, mutation }: { item: any, index: number, mutatio
                     <Text
                         ml={3}
                         as={"h5"}
+                        fontSize={{ base: "0.8rem", md: "1.2rem" }}
                         sx={{
                             textTransform: "capitalize",
                             fontWeight: "bold",
@@ -77,14 +71,20 @@ const CartItem = ({ item, index, mutation }: { item: any, index: number, mutatio
                             letterSpacing: "var(--spacing)",
                             mb: 0,
                             pb: 0,
-                            fontSize: "1.2rem",
                         }}
                     >
-                        {formatPrice(item?.totalPrice, 2)}
+                        {formatPrice(locale, currency, item?.totalPrice, 2)}
                     </Text>
                 </Flex>
-
-            </Flex></>
+            </Flex>
+            <Flex justifyContent={"center"} alignItems={"center"} display={{ base: "flex", md: "none" }} mt={2}>
+                <Quantity item={item} isPending={isPending} handleChange={async ({ productId, quantity }) => await mutateAsync({ productId, quantity })} />
+                <DeleteIcon ml={3} h="full" role="button" onClick={async () => {
+                    await mutateAsync(
+                        { productId: item?.productId?._id, quantity: 0 })
+                }} />
+            </Flex>
+        </>
     )
 }
 
