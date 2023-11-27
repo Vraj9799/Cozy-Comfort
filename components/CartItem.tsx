@@ -19,7 +19,7 @@ const CartItem = ({ item, index, mutation, }: { item: any, index: number, mutati
                     <Flex ml={5} flexDirection={"column"}>
                         <Text
                             as={"h5"}
-                            fontSize={{ base: "0.7rem", md: "1rem" }}
+                            fontSize={{ base: "0.8rem", md: "1rem" }}
                             sx={{
                                 textTransform: "capitalize",
                                 fontWeight: "bold",
@@ -34,7 +34,7 @@ const CartItem = ({ item, index, mutation, }: { item: any, index: number, mutati
                         </Text>
                         <Text
                             as={"h6"}
-                            fontSize={{ base: "0.6rem", md: "0.9rem" }}
+                            fontSize={{ base: "0.7rem", md: "0.9rem" }}
                             sx={{
                                 textTransform: "capitalize",
                                 fontWeight: "bold",
@@ -62,7 +62,7 @@ const CartItem = ({ item, index, mutation, }: { item: any, index: number, mutati
                     <Text
                         ml={3}
                         as={"h5"}
-                        fontSize={{ base: "0.8rem", md: "1.2rem" }}
+                        fontSize={{ base: "1rem", md: "1.2rem" }}
                         sx={{
                             textTransform: "capitalize",
                             fontWeight: "bold",
