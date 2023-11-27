@@ -4,7 +4,7 @@ import Quantity from "./Quantity";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { UseMutationResult } from "@tanstack/react-query";
 
-const CartItem = ({ item, index, mutation, locale, currency }: { item: any, index: number, mutation: UseMutationResult<any, any, any, unknown>, locale: string | null, currency: string | null }) => {
+const CartItem = ({ item, index, mutation }: { item: any, index: number, mutation: UseMutationResult<any, any, any, unknown> }) => {
     const { mutateAsync, isPending } = mutation;
     return (
         <>
