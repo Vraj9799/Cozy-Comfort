@@ -104,4 +104,9 @@ const OrderSchema = new Schema(
   },
   { timestamps: true }
 );
-export default mongoose.models.Orders || mongoose.model("Orders", OrderSchema);
+
+if (!mongoose.models?.Products) {
+  require("./Products");
+}
+
+export default mongoose.models?.Orders || mongoose.model("Orders", OrderSchema);
