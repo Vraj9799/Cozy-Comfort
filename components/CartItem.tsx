@@ -4,7 +4,7 @@ import Quantity from "./Quantity";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { UseMutationResult } from "@tanstack/react-query";
 
-const CartItem = ({ item, index, mutation }: { item: any, index: number, mutation: UseMutationResult<any, any, any, unknown> }) => {
+const CartItem = ({ item, index, mutation, }: { item: any, index: number, mutation: UseMutationResult<any, any, any, unknown> }) => {
     const { mutateAsync, isPending } = mutation;
     return (
         <>
@@ -46,7 +46,7 @@ const CartItem = ({ item, index, mutation }: { item: any, index: number, mutatio
                                 mt: 2
                             }}
                         >
-                            {formatPrice(locale, currency, item?.unitPrice, 2)}
+                            {formatPrice(item?.unitPrice, 2)}
                         </Text>
                     </Flex>
 
@@ -73,7 +73,7 @@ const CartItem = ({ item, index, mutation }: { item: any, index: number, mutatio
                             pb: 0,
                         }}
                     >
-                        {formatPrice(locale, currency, item?.totalPrice, 2)}
+                        {formatPrice(item?.totalPrice, 2)}
                     </Text>
                 </Flex>
             </Flex>
