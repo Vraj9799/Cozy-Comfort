@@ -138,40 +138,36 @@ export default function Page() {
                           </>
                         ))}
                     </Flex>
-                    {isFetchingNextPage ||
-                      (hasNextPage && (
-                        <Box mx={"auto"}>
-                          <Button
-                            onClick={() => fetchNextPage()}
-                            disabled={!hasNextPage || isFetchingNextPage}
-                            size="sm"
-                            w="fit-content"
-                            sx={{
-                              textTransform: "capitalize",
-                              letterSpacing: "var(--spacing)",
-                              borderRadius: "var(--radius)",
-                              transition: "var(--transition)",
-                              color: "var(--clr-primary-10)",
-                              bgColor: "var(--clr-primary-5)",
-                              borderColor: "transparent",
-                              fontWeight: 400,
-                              fontSize: "1rem",
-                              textAlign: "center",
-                              _hover: {
-                                color: "var(--clr-primary-1)",
-                                bgColor: "var(--clr-primary-7)",
-                                textDecoration: "none",
-                              },
-                            }}
-                          >
-                            {isFetchingNextPage
-                              ? "Loading more..."
-                              : hasNextPage
-                                ? "Load More"
-                                : ""}
-                          </Button>
-                        </Box>
-                      ))}
+                    {isFetchingNextPage && <Loading />}
+                    {!isFetchingNextPage && hasNextPage && (
+                      <Box mx={"auto"}>
+                        <Button
+                          onClick={() => fetchNextPage()}
+                          disabled={!hasNextPage || isFetchingNextPage}
+                          size="sm"
+                          w="fit-content"
+                          sx={{
+                            textTransform: "capitalize",
+                            letterSpacing: "var(--spacing)",
+                            borderRadius: "var(--radius)",
+                            transition: "var(--transition)",
+                            color: "var(--clr-primary-10)",
+                            bgColor: "var(--clr-primary-5)",
+                            borderColor: "transparent",
+                            fontWeight: 400,
+                            fontSize: "1rem",
+                            textAlign: "center",
+                            _hover: {
+                              color: "var(--clr-primary-1)",
+                              bgColor: "var(--clr-primary-7)",
+                              textDecoration: "none",
+                            },
+                          }}
+                        >
+                          Load More
+                        </Button>
+                      </Box>
+                    )}
                   </Flex>
                 </>
               )}
