@@ -38,7 +38,7 @@ const Page = () => {
     return (
         <>
             <Container maxW={"container.xl"}>
-                {data && data?.length > 0 ? data?.orders?.map((item: any, index: number) => (
+                {data && data?.orders?.length > 0 ? data?.orders?.map((item: any, index: number) => (
                     <OrderItem item={item} key={index} />
                 )) :
                     <Flex h="full" w="full" mt={10} justifyContent={"center"} flexDirection={"column"}>
