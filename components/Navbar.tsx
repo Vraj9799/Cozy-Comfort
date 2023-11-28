@@ -54,7 +54,7 @@ export default function Navbar({
           >
             <Box>
               <Link href={"/"}>
-                <Image src={"/vs-logo.png"} alt="vs" width={"-moz-fit-content"} height={"50"} />
+                <Image src={"/cozy-comfort-logo.svg"} alt="Cozy Comfort" width={"-moz-fit-content"} height={"45"} />
               </Link>
             </Box>
             <Icon

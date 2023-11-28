@@ -3,12 +3,12 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Box } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
-import "./globals.css";
 import Loading from "@/components/Loading";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import useCartStore from "@/store/useCartStore";
-import { stat } from "fs";
+import "./globals.css";
+
 
 export default function Index({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession();

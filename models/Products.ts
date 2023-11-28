@@ -34,6 +34,9 @@ const productSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    views: {
+      type: Number,
+    },
     addedBy: {
       type: mongoose.Types.ObjectId,
       ref: "Users",

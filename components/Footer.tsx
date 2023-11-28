@@ -18,7 +18,7 @@ export default function Footer() {
             >
                 &copy; {new Date().getFullYear()}
                 <Box as="span" color="var(--clr-primary-5)">
-                    {" "}VS{" "}
+                    {" "}Cozy Comfort{" "}
                 </Box>
                 All rights reserved.
             </Text>

@@ -46,7 +46,6 @@ export async function GET(request: NextRequest) {
     console.error(`ERROR IN GET PRODUCTS -> ${error}`);
     return NextResponse.json({ error: "Something went wrong..." }, { status: 500 })
   }
-
 }
 
 export async function POST(request: NextRequest) {

@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import Loading from "@/components/Loading";
 import { formatPrice } from "@/helpers/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AddIcon, MinusIcon, } from "@chakra-ui/icons";
 import { Link } from "@chakra-ui/next-js";
 import { BsShareFill, BsStarFill } from "react-icons/bs";
@@ -49,6 +49,12 @@ const Page = () => {
     enabled: !!id,
     staleTime: 1000 * 60 * 15,
   });
+
+  useEffect(() => {
+    if (data) {
+      document.title = `Cozy Comfort - ${data?.product?.name}`;
+    }
+  }, [data]);
 
   const { mutateAsync, isPending } = useMutation({
     mutationKey: [`add-cart-${id}`],

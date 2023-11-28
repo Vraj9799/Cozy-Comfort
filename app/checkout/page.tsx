@@ -11,7 +11,7 @@ const Page = () => {
         setTimeout(() => {
             router.replace('/products');
         }, 5 * 1000)
-    }, []);
+    }, [router]);
 
 
     return (
