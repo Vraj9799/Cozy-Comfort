@@ -26,6 +26,10 @@ const productSchema = new Schema(
     rating: {
       type: Number,
     },
+    freeShipping: {
+      type: Boolean,
+      default: false
+    },
     category: {
       type: mongoose.Types.ObjectId,
       ref: "Categories",

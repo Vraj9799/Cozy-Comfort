@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, description, images, price, quantity, rating, category } =
+    const { name, description, images, price, quantity, rating, category, freeShipping } =
       await request.json();
     await dbConnect();
     let product = await Products.create({
@@ -61,6 +61,7 @@ export async function POST(request: NextRequest) {
       quantity,
       rating,
       category,
+      freeShipping,
       views: 0,
     });
     return NextResponse.json({ product }, { status: 201 });
